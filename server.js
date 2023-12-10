@@ -1,13 +1,15 @@
+/* Modules necessaires*/
 const express = require('express')
 const mongoose = require('mongoose')
 
+/* initialisation de l' api*/
 const app = express()
 
 /*****IMPORT DES MODULES DE ROUTAGE */
 const user_router = require('./routes/users')
 
 /*****MISE EN PLACE DU ROUTAGE */
-app.get('/', (req, res) => res.send(`I'm online. TUTTI IS OKAY !`))
+app.get('/', (req, res) => res.send(`Serveur node et express sur port ${PORT}`))
 app.use('/users', user_router)
 
 app.get('*', (req, res) => res.status(501).send(`hey ! La ressource n'existe pas (la fonctionnalité réclamée n’est pas supportée par le serveur)!`))
@@ -16,9 +18,9 @@ app.get('*', (req, res) => res.status(501).send(`hey ! La ressource n'existe pas
 mongoose
     .connect(process.env.MONGODB_URL)
     .then(() =>{
-        console.log("Database connection ok !");
+        console.log("Database mongodb is connected!");
         app.listen(process.env.SERVER_PORT, () => {
-            console.log(`This serveur is running on port ${process.env.SERVER_PORT}. Connected !`)
+            console.log(`This server is running on port ${process.env.SERVER_PORT}. Connected !`)
         })
 })
-.catch(error => console.log('Database Error', error))
+.catch(error => console.log('Connection Database Error', error))
