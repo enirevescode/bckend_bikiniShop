@@ -16,10 +16,10 @@ app.get('*', (req, res) => res.status(501).send(`hey ! La ressource n'existe pas
 
 // START SERVEUR
 mongoose
-    .connect(process.env.MONGODB_URL)
+    .connect(process.env.MONGO_DB_CONNECTIONSTRING)
     .then(() =>{
         console.log("Database mongodb is connected!");
-        app.listen(process.env.SERVER_PORT, () => {
+        app.listen(process.env.PORT, () => {
             console.log(`This server is running on port ${process.env.SERVER_PORT}. Connected !`)
         })
 })
