@@ -45,16 +45,15 @@ exports.addUser = async (req, res, next) => {
         }
 
         // Hashage du mot de passe utilisateur
-        // let hash = await bcrypt.hash(password, parseInt(process.env.BCRYPT_SALT_ROUND))
-        // req.body.password = hash
+        let hash = await bcrypt.hash(password, parseInt(process.env.BCRYPT_SALT_ROUND))
+        req.body.password = hash
 
         //Création de l'utilisateur
         const user = new UserModel({
-            ...req.body,
-            like: 0
+            ...req.body
         })
         // Ajout de l'utilisateur
-        user = await User.save()
+        user = await user.save()
         return res.json({ message: 'User Created', data: user })
 
     } catch (err) {
@@ -70,12 +69,6 @@ exports.updateUser = async (req, res, next) => {
         if (!userId) {
             throw new RequestError('Missing parameter')
         }
-
-        // Recherche de l'utilisateur et vérification
-        // let user = await User.findOne({ where: { id: userId }, raw: true })
-        // if (user === null) {
-        //     throw new UserError('This user does not exist !', 0)
-        // }
 
         // Mise à jour de l'utilisateur
         await UserModel.findByIdAndUpdate(

@@ -7,6 +7,7 @@ const app = express()
 
 /*****IMPORT DES MODULES DE ROUTAGE */
 const user_router = require('./routes/users')
+//const produit_router = require('./routes/produits')
 
 /*****MISE EN PLACE DU ROUTAGE */
 app.get('/', (req, res) => res.send(`Serveur node et express sur port ${PORT}`))
@@ -20,7 +21,7 @@ mongoose
     .then(() =>{
         console.log("Database mongodb is connected!");
         app.listen(process.env.PORT, () => {
-            console.log(`This server is running on port ${process.env.SERVER_PORT}. Connected !`)
+            console.log(`This server is running on port ${process.env.PORT}. Connected !`)
         })
 })
 .catch(error => console.log('Connection Database Error', error))
