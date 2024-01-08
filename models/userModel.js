@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 // Modèle user
 const UserSchema = mongoose.Schema({
-    nom: {type: String, default: ''},
-    prenom: {type: String, default: ''},
+    nom: {type: String, default: 'Nom'},
+    prenom: {type: String, default: 'Prénom'},
     pseudo: {type: String, require: true, unique: true},
     email: {type: String, require: true, unique: true},
     password: {type: String, require: true, unique: true},

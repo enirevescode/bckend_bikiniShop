@@ -1,19 +1,19 @@
 /* Modules necessaires*/
-const express = require('express')
+const express = require("express")
 const mongoose = require('mongoose')
 
 /* initialisation de l' api*/
 const app = express()
 
 /*****IMPORT DES MODULES DE ROUTAGE */
-const user_router = require('./routes/users')
+const user_router = require('./routes/usersRoutes')
 //const produit_router = require('./routes/produits')
 
 /*****MISE EN PLACE DU ROUTAGE */
 app.get('/', (req, res) => res.send(`Serveur node et express sur port ${PORT}`))
 app.use('/users', user_router)
 
-app.get('*', (req, res) => res.status(501).send(`hey ! La ressource n'existe pas (la fonctionnalité réclamée n’est pas supportée par le serveur)!`))
+app.get('*', (req, res) => res.status(501).send(`hey ! La ressource n'existe pas !`))
 
 // START SERVEUR
 mongoose

@@ -5,7 +5,7 @@ const userCtrl = require('../controllers/userControllers')
 // Récupération du routeur d'express
 let router = express.Router()
 
-// Middleware pour logger dates de requêtes(sur tte les routes d'1 fichier)
+// Middleware pour logger dates de requêtes(sur ttes les routes d'1 fichier)
 router.use( (req, res, next) => {
     const event = new Date()
     console.log('User Time:', event.toString())

@@ -1,4 +1,8 @@
 // import des modules necessaires (express, le modèle, bcrypt)
+// import mongoose from 'mongoose'
+// import { userSchema } from '../models/userModel'
+// const userModel = mongoose.Model( 'userModel', userSchema)
+
 const bcrypt = require('bcrypt')
 const UserModel = require('../models/userModel')
 
