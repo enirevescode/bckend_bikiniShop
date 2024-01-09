@@ -45,7 +45,7 @@ exports.addUser = async (req, res, next) => {
 
         // Validation des données reçues
         if (!nom || !prenom || !pseudo || !email || !password) {
-            return res.status(400).json({ massage: 'Missing data'})
+            return res.status(400).json({ message: 'Missing data'})
         }
         try {
         // Hashage du mot de passe utilisateur
