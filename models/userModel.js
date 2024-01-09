@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 // Modèle user
-const UserSchema = mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     nom: {type: String, default: 'Nom'},
     prenom: {type: String, default: 'Prénom'},
     pseudo: {type: String, require: true, unique: true},

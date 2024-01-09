@@ -4,6 +4,10 @@ const mongoose = require('mongoose')
 
 /* initialisation de l' api*/
 const app = express()
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true }))
 
 /*****IMPORT DES MODULES DE ROUTAGE */
 const user_router = require('./routes/usersRoutes')

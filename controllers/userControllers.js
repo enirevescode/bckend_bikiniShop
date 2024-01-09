@@ -40,7 +40,7 @@ exports.getUser = async (req, res, next) => {
 }
 
 exports.addUser = async (req, res, next) => {
-    
+    console.log('req body', req)
         const { nom, prenom, pseudo, email, password } = req.body
 
         // Validation des données reçues
@@ -50,15 +50,15 @@ exports.addUser = async (req, res, next) => {
         try {
         // Hashage du mot de passe utilisateur
         let hash = await bcrypt.hash(password, parseInt(process.env.BCRYPT_SALT_ROUND))
-        req.body.password = hash
+        //req.body.password = hash
 
         //Création de l'utilisateur
-        const user = new UserModel({
-            ...req.body
-        })
+        // const user = new UserModel({
+        //     ...req.body
+        // })
         // Ajout de l'utilisateur
-        let userc = await user.save()
-        return res.json({ message: 'User Created', data: userc })
+        // let userc = await user.save()
+        // return res.json({ message: 'User Created', data: userc })
 
     } catch (err) {
         next(err)
