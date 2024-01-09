@@ -18,7 +18,7 @@ router.get('/', userCtrl.getAllUsers)
 
 router.get('/:id', userCtrl.getUser)
 
-router.post('', userCtrl.addUser)
+router.put('', userCtrl.addUser)
 
 router.patch('/:id', userCtrl.updateUser)
 

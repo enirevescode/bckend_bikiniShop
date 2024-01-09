@@ -11,6 +11,6 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.pre('save', async function() {
     console.log('dans le hook 2')
-    this.password = await bcrypt.hash(this.password, parseInt(process.env.BCRYPT_SALT_ROUND))
+    //this.password = await bcrypt.hash(this.password, parseInt(process.env.BCRYPT_SALT_ROUND))
 })
 module.exports = mongoose.model('UserModel', UserSchema)
