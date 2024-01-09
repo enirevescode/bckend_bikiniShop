@@ -40,14 +40,14 @@ exports.getUser = async (req, res, next) => {
 }
 
 exports.addUser = async (req, res, next) => {
-    try {
+    
         const { nom, prenom, pseudo, email, password } = req.body
 
         // Validation des données reçues
         if (!nom || !prenom || !pseudo || !email || !password) {
-            throw new RequestError('Missing parameter')
+            return res.status(400).json({ massage: 'Missing data'})
         }
-
+        try {
         // Hashage du mot de passe utilisateur
         let hash = await bcrypt.hash(password, parseInt(process.env.BCRYPT_SALT_ROUND))
         req.body.password = hash
@@ -57,8 +57,8 @@ exports.addUser = async (req, res, next) => {
             ...req.body
         })
         // Ajout de l'utilisateur
-        user = await user.save()
-        return res.json({ message: 'User Created', data: user })
+        let userc = await user.save()
+        return res.json({ message: 'User Created', data: userc })
 
     } catch (err) {
         next(err)
